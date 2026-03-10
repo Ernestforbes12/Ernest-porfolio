@@ -1,0 +1,41 @@
+ @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap');
+
+ * {margin:0; padding: 0; box-sizing: border-box;}
+
+ /* ── CSS VARIABLES (your design system) ── */
+:root {
+  --navy:        #0a0f1e;
+  --navy-2:      #0d1527;
+  --navy-3:      #111d35;
+  --cyan:        #00f5c4;
+  --cyan-dim:    rgba(0, 245, 196, 0.15);
+  --cyan-glow:   rgba(0, 245, 196, 0.4);
+  --white:       #ffffff;
+  --gray:        #a0aec0;
+  --border:      rgba(0, 245, 196, 0.2);
+  --font-main:   'Space Grotesk', sans-serif;
+  --font-display:'Syne', sans-serif;
+}
+
+/* ── BASE BODY ── */
+body {
+  background-color: var(--navy);
+  color: var(--white);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 24px 60px;
+background-color: var(--navy-2);
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 36px;
+}
