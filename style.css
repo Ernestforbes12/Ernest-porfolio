@@ -59,7 +59,7 @@ gap: 36px;
 .nav-links li.active {
   color: var(--cyan);
 }
-
+/* Hero Section */
 .hero {
     display: grid;
     min-height: 100vh;
@@ -67,4 +67,137 @@ gap: 36px;
     gap: 30px;
     align-items: center;
     grid-template-columns: 1fr 1fr;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-visual {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.hero-tag {
+  display: inline-block;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  color: var(--cyan);
+}
+
+.hero-title {
+  font-size: 18px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--cyan);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  font-size: 14px;
+  padding: 14px 32px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat-box {
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+/* About Section */
+.about {
+ background-color: var(--navy-2);
+ gap: 25px;
+ padding: 34px 56px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
 }
