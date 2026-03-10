@@ -32,10 +32,39 @@ justify-content: space-between;
 align-items: center;
 padding: 24px 60px;
 background-color: var(--navy-2);
+border-bottom: 1px solid var(--border);
+position: sticky;
+top: 0;
+z-index: 100;
 }
 
 .nav-links {
 list-style: none;
 display: flex;
 gap: 36px;
+}
+
+.nav-links li {
+  color: var(--gray);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+  color: var(--cyan);
+}
+
+.nav-links li.active {
+  color: var(--cyan);
+}
+
+.hero {
+    display: grid;
+    min-height: 100vh;
+    padding: 24px 40px;
+    gap: 30px;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
 }
