@@ -53,6 +53,17 @@ gsap.utils.toArray(".section-title").forEach(title => {
   });
 });
 
+// Skill bars fill up on scroll
+gsap.utils.toArray(".skill-fill").forEach(bar => {
+  const targetWidth = bar.style.width;
+  gsap.from(bar, {
+    scrollTrigger: { trigger: bar, start: "top 90%" },
+    width: "0%",
+    duration: 1.2,
+    ease: "power2.out"
+  });
+});
+
 
 
 // 1. DECLARATIONS FIRST
