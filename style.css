@@ -1,8 +1,8 @@
- @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap');
 
- * {margin:0; padding: 0; box-sizing: border-box;}
+* {margin:0; padding: 0; box-sizing: border-box;}
 
- /* ── CSS VARIABLES (your design system) ── */
+/* ── CSS VARIABLES (your design system) ── */
 :root {
   --navy:        #0a0f1e;
   --navy-2:      #0d1527;
@@ -26,29 +26,28 @@ body {
   overflow-x: hidden;
 }
 
+/* ── NAV ── */
 nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 24px 60px;
-background-color: var(--navy-2);
-border-bottom: 1px solid var(--border);
-position: sticky;
-top: 0;
-z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background-color: var(--navy-2);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-logo {
- font-family: var(--font-display);
- font-size: 24px;
- font-weight: 800;
- color: var(--cyan);
- letter-spacing: -1px;
- text-decoration: none;
- 
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: -1px;
+  text-decoration: none;
 }
 
-/* Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -66,70 +65,10 @@ z-index: 100;
   transition: all 0.3s ease;
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    width: 60%;
-    height: 100vh;
-    background: var(--navy-2);
-    flex-direction: column;
-    padding: 40px;
-    gap: 32px;
-    border-left: 1px solid var(--border);
-    transition: right 0.3s ease;
-    z-index: 999;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
-  /* Stack all sections to single column on mobile */
-  .hero, .about, .contact {
-    grid-template-columns: 1fr;
-    padding: 60px 24px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-name {
-    font-size: 42px;
-  }
-
-  .section-title {
-    font-size: 32px;
-  }
-
-  .hero-visual img {
-    height: 300px;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-    padding: 32px 24px;
-  }
-}
-
 .nav-links {
-list-style: none;
-display: flex;
-gap: 36px;
+  list-style: none;
+  display: flex;
+  gap: 36px;
 }
 
 .nav-links li {
@@ -143,20 +82,20 @@ gap: 36px;
 .nav-links li:hover {
   color: var(--cyan);
   transform: translateY(-3px);
-
 }
 
 .nav-links li.active {
   color: var(--cyan);
 }
-/* Hero Section */
+
+/* ── HERO ── */
 .hero {
-    display: grid;
-    min-height: 100vh;
-    padding: 24px 40px;
-    gap: 30px;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  min-height: 100vh;
+  padding: 24px 40px;
+  gap: 30px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
 }
 
 .hero-left {
@@ -254,6 +193,8 @@ gap: 36px;
   border: 1px solid var(--border);
   cursor: pointer;
   transition: border-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-secondary:hover {
@@ -287,13 +228,14 @@ gap: 36px;
   color: var(--gray);
   margin-top: 4px;
 }
-/* About Section */
+
+/* ── ABOUT ── */
 .about {
- background-color: var(--navy-2);
- gap: 25px;
- padding: 34px 56px;
- display: grid;
- grid-template-columns: 1fr 1fr;
+  background-color: var(--navy-2);
+  gap: 25px;
+  padding: 34px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .section-tag {
@@ -360,7 +302,7 @@ gap: 36px;
   color: var(--gray);
 }
 
-/* Projects Section */
+/* ── PROJECTS ── */
 .projects {
   padding: 100px 60px;
 }
@@ -405,7 +347,6 @@ gap: 36px;
   border-color: var(--cyan);
 }
 
-/* Project thumbnail with hover blur effect */
 .project-thumb {
   position: relative;
   height: 200px;
@@ -421,7 +362,6 @@ gap: 36px;
   display: block;
 }
 
-/* THE HOVER BLUR OVERLAY */
 .project-thumb::after {
   content: '';
   position: absolute;
@@ -530,16 +470,16 @@ gap: 36px;
   border-radius: 3px;
 }
 
-/* Skills Section */
+/* ── SKILLS ── */
 .skills {
- padding: 100px 60px;
- background-color: var(--navy-2);
+  padding: 100px 60px;
+  background-color: var(--navy-2);
 }
 
 .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .skill-cat-title {
@@ -589,12 +529,12 @@ gap: 36px;
   border-radius: 3px;
 }
 
-/* Contact Section */
+/* ── CONTACT ── */
 .contact {
- display: grid;
- padding: 100px 60px;
- grid-template-columns: 1fr 1fr;
- gap: 16px;
+  display: grid;
+  padding: 100px 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .contact-desc {
@@ -652,7 +592,6 @@ gap: 36px;
   color: var(--gray);
 }
 
-/* Contact Form */
 .contact-form {
   background: var(--navy-3);
   border: 1px solid var(--border);
@@ -711,7 +650,7 @@ gap: 36px;
   opacity: 0.85;
 }
 
-/* Footer */
+/* ── FOOTER ── */
 footer {
   padding: 32px 60px;
   border-top: 1px solid var(--border);
@@ -745,9 +684,103 @@ footer {
   opacity: 0.7;
 }
 
-/* Divider */
+/* ── DIVIDER ── */
 .divider {
   height: 1px;
   background: var(--border);
   margin: 0 60px;
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 16px 24px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: var(--navy-2);
+    flex-direction: column;
+    padding: 40px;
+    gap: 32px;
+    border-left: 1px solid var(--border);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    min-height: auto;
+  }
+
+  .hero-right {
+    order: -1;
+  }
+
+  .hero-visual img {
+    height: 280px;
+  }
+
+  .hero-name {
+    font-size: 48px;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+  }
+
+  .projects {
+    padding: 60px 24px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills {
+    padding: 60px 24px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .divider {
+    margin: 0 24px;
+  }
 }
