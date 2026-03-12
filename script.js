@@ -119,3 +119,109 @@ backToTop.addEventListener('click', function() {
   const homeSection = document.querySelector('#home');
   homeSection.scrollIntoView({ behavior: 'smooth' });
 });
+
+// ── THREE.JS HERO BACKGROUND ──
+const canvas = document.getElementById('hero-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+camera.position.z = 80;
+
+// Create particles
+const particleCount = 120;
+const positions = [];
+const velocities = [];
+
+for (let i = 0; i < particleCount; i++) {
+  positions.push({
+    x: (Math.random() - 0.5) * 200,
+    y: (Math.random() - 0.5) * 200,
+    z: (Math.random() - 0.5) * 50
+  });
+  velocities.push({
+    x: (Math.random() - 0.5) * 0.15,
+    y: (Math.random() - 0.5) * 0.15
+  });
+}
+
+// Particle dots
+const dotGeometry = new THREE.BufferGeometry();
+const dotPositions = new Float32Array(particleCount * 3);
+positions.forEach((p, i) => {
+  dotPositions[i * 3] = p.x;
+  dotPositions[i * 3 + 1] = p.y;
+  dotPositions[i * 3 + 2] = p.z;
+});
+dotGeometry.setAttribute('position', new THREE.BufferAttribute(dotPositions, 3));
+const dotMaterial = new THREE.PointsMaterial({
+  color: 0x00f5c4,
+  size: 1.2,
+  transparent: true,
+  opacity: 0.7
+});
+const dots = new THREE.Points(dotGeometry, dotMaterial);
+scene.add(dots);
+
+// Connection lines
+const lineMaterial = new THREE.LineBasicMaterial({
+  color: 0x00f5c4,
+  transparent: true,
+  opacity: 0.15
+});
+
+function getLines() {
+  const group = new THREE.Group();
+  for (let i = 0; i < particleCount; i++) {
+    for (let j = i + 1; j < particleCount; j++) {
+      const dx = positions[i].x - positions[j].x;
+      const dy = positions[i].y - positions[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 35) {
+        const geo = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(positions[i].x, positions[i].y, positions[i].z),
+          new THREE.Vector3(positions[j].x, positions[j].y, positions[j].z)
+        ]);
+        group.add(new THREE.Line(geo, lineMaterial));
+      }
+    }
+  }
+  return group;
+}
+
+let lineGroup = getLines();
+scene.add(lineGroup);
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Move particles
+  positions.forEach((p, i) => {
+    p.x += velocities[i].x;
+    p.y += velocities[i].y;
+    if (p.x > 100 || p.x < -100) velocities[i].x *= -1;
+    if (p.y > 100 || p.y < -100) velocities[i].y *= -1;
+    dotPositions[i * 3] = p.x;
+    dotPositions[i * 3 + 1] = p.y;
+  });
+  dotGeometry.attributes.position.needsUpdate = true;
+
+  // Rebuild lines
+  scene.remove(lineGroup);
+  lineGroup = getLines();
+  scene.add(lineGroup);
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// Resize handler
+window.addEventListener('resize', () => {
+  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+  camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
+  camera.updateProjectionMatrix();
+});
