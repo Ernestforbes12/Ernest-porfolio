@@ -12,7 +12,13 @@
  <!-- NAV -->
   <nav>
     <div class="nav-logo">EF</div>
-    <ul class="nav-links">
+    <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+    <ul class="nav-links" id="nav-links">
       <li class="active">Home</li>
       <li>About</li>
       <li>Projects</li>
@@ -304,15 +310,15 @@
       </div><!-- end contact-info -->
     </div><!-- end contact-left -->
 
-    <div class="contact-form">
-      <h3 class="form-title">Send a Message</h3>
-      <input type="text" class="form-field" placeholder="Your Name"/>
-      <input type="email" class="form-field" placeholder="Your Email"/>
-      <input type="text" class="form-field" placeholder="Subject"/>
-      <textarea class="form-field tall" placeholder="Your message here..."></textarea>
-      <button type="button" class="form-submit">Send Message →</button>
-    </div><!-- end contact-form -->
-
+  <!--Contact Form-->
+<form class="contact-form" action="https://formspree.io/f/mvzwayve" method="POST">
+  <h3 class="form-title">Send a Message</h3>
+  <input type="text" name="name" class="form-field" placeholder="Your Name" required/>
+  <input type="email" name="email" class="form-field" placeholder="Your Email" required/>
+  <input type="text" name="subject" class="form-field" placeholder="Subject" required/>
+  <textarea name="message" class="form-field tall" placeholder="Your message here..." required></textarea>
+  <button type="submit" class="form-submit">Send Message →</button>
+</form>
   </section><!-- end contact -->
 
   <!-- FOOTER -->
