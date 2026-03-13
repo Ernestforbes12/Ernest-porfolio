@@ -337,3 +337,33 @@ sliderDots.forEach(function(dot, index) {
     goToSlide(index);
   });
 });
+
+// ── EMAILJS CONTACT FORM ──
+emailjs.init("czbugCs4hReB_1-zG");
+
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const submitBtn = contactForm.querySelector('.form-submit');
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+
+  emailjs.sendForm('service_qk0h4sb', 'template_0z0ne3n', contactForm)
+    .then(function() {
+      submitBtn.textContent = 'Message Sent! ✓';
+      submitBtn.style.background = '#00c896';
+      contactForm.reset();
+      setTimeout(() => {
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 4000);
+    })
+    .catch(function(error) {
+      submitBtn.textContent = 'Failed. Try Again.';
+      submitBtn.disabled = false;
+      console.error('EmailJS error:', error);
+    });
+});

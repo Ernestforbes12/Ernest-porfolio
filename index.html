@@ -339,13 +339,13 @@
 </div><!-- end contact-left -->
 
   <!--Contact Form-->
-<form class="contact-form" action="https://formspree.io/f/mvzwayve" method="POST">
-  <h3 class="form-title">Send a Message</h3>
-  <input type="text" name="name" class="form-field" placeholder="Your Name" required/>
-  <input type="email" name="email" class="form-field" placeholder="Your Email" required/>
-  <input type="text" name="subject" class="form-field" placeholder="Subject" required/>
-  <textarea name="message" class="form-field tall" placeholder="Your message here..." required></textarea>
-  <button type="submit" class="form-submit">Send Message →</button>
+<form class="contact-form" id="contact-form">
+<h3 class="form-title">Send a Message</h3>
+<input name="name" class="form-field" type="text" placeholder="Your Name">
+<input name="email" class="form-field" type="email" placeholder="Your Email">
+<input name="subject" class="form-field" type="text" placeholder="Subject">
+<textarea name="message" class="form-field tall" placeholder="Your message here..."></textarea>
+<button type="submit" class="form-submit">Send Message →</button>
 </form>
   </section><!-- end contact -->
 
@@ -355,6 +355,9 @@
     <div class="footer-copy">Designed & Built by Ernest Forbes Jr. 🇧🇸</div>
     <a href="#home" class="footer-top">↑ Back to Top</a>
   </footer>
+
+  <!--EmailJS-->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <!--GSAP-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
