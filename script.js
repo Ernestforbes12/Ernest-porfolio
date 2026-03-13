@@ -350,20 +350,24 @@ contactForm.addEventListener('submit', function(e) {
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
 
-  emailjs.sendForm('service_qk0h4sb', 'template_0z0ne3n', contactForm)
-    .then(function() {
-      submitBtn.textContent = 'Message Sent! ✓';
-      submitBtn.style.background = '#00c896';
-      contactForm.reset();
-      setTimeout(() => {
-        submitBtn.textContent = 'Send Message →';
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-      }, 4000);
-    })
-    .catch(function(error) {
-      submitBtn.textContent = 'Failed. Try Again.';
+emailjs.sendForm('service_qk0h4sb', 'template_0z0ne3n', contactForm)
+  .then(function() {
+    // Send notification to yourself
+    return emailjs.sendForm('service_qk0h4sb', 'template_0qx1d57', contactForm);
+  })
+  .then(function() {
+    submitBtn.textContent = 'Message Sent! ✓';
+    submitBtn.style.background = '#00c896';
+    contactForm.reset();
+    setTimeout(() => {
+      submitBtn.textContent = 'Send Message →';
+      submitBtn.style.background = '';
       submitBtn.disabled = false;
-      console.error('EmailJS error:', error);
-    });
+    }, 4000);
+  })
+  .catch(function(error) {
+    submitBtn.textContent = 'Failed. Try Again.';
+    submitBtn.disabled = false;
+    console.error('EmailJS error:', error);
+  });
 });
