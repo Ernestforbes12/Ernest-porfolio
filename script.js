@@ -270,3 +270,70 @@ window.addEventListener('resize', () => {
   camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
   camera.updateProjectionMatrix();
 });
+
+// ── PROJECT SLIDER (MOBILE ONLY) ──
+const projectsGrid = document.querySelector('.projects-grid');
+const cards = document.querySelectorAll('.project-card');
+const sliderDots = document.querySelectorAll('.slider-dots .dot');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentIndex = 0;
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  if (isMobile()) {
+    cards.forEach((card, i) => {
+      card.style.transform = `translateX(${(i - currentIndex) * 100}%)`;
+    });
+    sliderDots.forEach(dot => dot.classList.remove('active'));
+    sliderDots[currentIndex].classList.add('active');
+  }
+}
+
+function initSlider() {
+  if (isMobile()) {
+    cards.forEach((card, i) => {
+      card.style.position = 'absolute';
+      card.style.top = '0';
+      card.style.left = '0';
+      card.style.width = '100%';
+      card.style.transform = `translateX(${i * 100}%)`;
+    });
+    projectsGrid.style.position = 'relative';
+    projectsGrid.style.height = cards[0].offsetHeight + 'px';
+  } else {
+    cards.forEach(card => {
+      card.style.position = '';
+      card.style.top = '';
+      card.style.left = '';
+      card.style.width = '';
+      card.style.transform = '';
+    });
+    projectsGrid.style.position = '';
+    projectsGrid.style.height = '';
+  }
+}
+
+initSlider();
+window.addEventListener('resize', initSlider);
+
+nextBtn.addEventListener('click', function() {
+  const next = currentIndex === cards.length - 1 ? 0 : currentIndex + 1;
+  goToSlide(next);
+});
+
+prevBtn.addEventListener('click', function() {
+  const prev = currentIndex === 0 ? cards.length - 1 : currentIndex - 1;
+  goToSlide(prev);
+});
+
+sliderDots.forEach(function(dot, index) {
+  dot.addEventListener('click', function() {
+    goToSlide(index);
+  });
+});

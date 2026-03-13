@@ -101,12 +101,16 @@ nav {
 
 .hero-left {
   padding-top: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-right {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-visual {
@@ -340,7 +344,7 @@ nav {
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.4s ease, border-color 0.3s ease;
 }
 
 .project-card:hover {
@@ -692,7 +696,7 @@ footer {
   margin: 0 60px;
 }
 
-/* Three.js Canvas */
+/* ── THREE.JS CANVAS ── */
 #hero-canvas {
   position: absolute;
   top: 0;
@@ -752,6 +756,34 @@ footer {
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0;
+}
+
+/* ── PROJECT SLIDER ── */
+.slider-wrapper {
+  position: relative;
+}
+
+.slider-btn {
+  display: none;
+}
+
+.slider-dots {
+  display: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--cyan);
+  width: 20px;
+  border-radius: 4px;
 }
 
 /* ── MOBILE RESPONSIVE ── */
@@ -815,8 +847,56 @@ footer {
     padding: 60px 24px;
   }
 
+  .slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+  }
+
+  .slider-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+  }
+
+  .prev-btn { left: -8px; }
+  .next-btn { right: -8px; }
+
+  .slider-btn:hover {
+    border-color: var(--cyan);
+    background: var(--cyan-dim);
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
   .projects-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow: visible;
+    gap: 0;
+    width: 100%;
+  }
+
+  .project-card {
+    min-width: 100%;
+    flex-shrink: 0;
+    transition: transform 0.4s ease;
   }
 
   .skills {
