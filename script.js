@@ -176,7 +176,7 @@ const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offse
 camera.position.z = 80;
 
 // Create particles
-const particleCount = 120;
+const particleCount = 60;
 const positions = [];
 const velocities = [];
 
@@ -224,7 +224,7 @@ function getLines() {
       const dx = positions[i].x - positions[j].x;
       const dy = positions[i].y - positions[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 35) {
+      if (dist < 25) {
         const geo = new THREE.BufferGeometry().setFromPoints([
           new THREE.Vector3(positions[i].x, positions[i].y, positions[i].z),
           new THREE.Vector3(positions[j].x, positions[j].y, positions[j].z)
