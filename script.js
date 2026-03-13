@@ -1,3 +1,48 @@
+// ── CINEMATIC LOADER ──
+const loader = document.getElementById('loader');
+const loaderInitials = document.querySelector('.loader-initials');
+const loaderLine = document.querySelector('.loader-line');
+const loaderName = document.querySelector('.loader-name');
+const loaderTitle = document.querySelector('.loader-title');
+
+const loaderTimeline = gsap.timeline({
+  onComplete: () => {
+    gsap.to(loader, {
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.inOut",
+      onComplete: () => {
+        loader.style.display = 'none';
+      }
+    });
+  }
+});
+
+loaderTimeline
+  .to(loaderInitials, {
+    opacity: 1,
+    duration: 0.8,
+    ease: "power2.out"
+  })
+  .to(loaderLine, {
+    width: "200px",
+    duration: 0.6,
+    ease: "power2.inOut"
+  })
+  .to(loaderName, {
+    opacity: 1,
+    duration: 0.6,
+    ease: "power2.out"
+  })
+  .to(loaderTitle, {
+    opacity: 1,
+    duration: 0.5,
+    ease: "power2.out"
+  })
+  .to({}, { duration: 0.8 });
+
+
+
 // ── GSAP ANIMATIONS ──
 gsap.registerPlugin(ScrollTrigger);
 
