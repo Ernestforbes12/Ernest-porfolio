@@ -345,6 +345,8 @@ nav {
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.4s ease, border-color 0.3s ease;
+  height: auto;
+  min-height: unset;
 }
 
 .project-card:hover {
@@ -420,6 +422,9 @@ nav {
   color: var(--gray);
   line-height: 1.6;
   margin-bottom: 16px;
+  overflow: visible;
+  display: block;
+  -webkit-line-clamp: unset;
 }
 
 .project-links {

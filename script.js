@@ -305,7 +305,8 @@ function initSlider() {
       card.style.transform = `translateX(${i * 100}%)`;
     });
     projectsGrid.style.position = 'relative';
-    projectsGrid.style.height = cards[0].offsetHeight + 'px';
+    const tallest = Math.max(...Array.from(cards).map(c => c.offsetHeight));
+    projectsGrid.style.height = tallest + 'px';
   } else {
     cards.forEach(card => {
       card.style.position = '';
